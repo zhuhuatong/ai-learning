@@ -15,25 +15,35 @@ def one_old(myTree,data,labels):
 
 
 
-{'petal width (cm)':
-     {0.4: {'sepal width (cm)':
-                {3.5: 0, 2.0: 1, 3.2: 0, 2.6: 1}
-            },
-      1.8: {'sepal width (cm)':
-                {2.0: 2,
-                 3.0: 2,
-                 3.5: 2,
-                 2.6: 2,
-                 2.8: 2,
-                 3.2: {'sepal length (cm)':
-                           {5.6: 1, 6.3: 2}
-                       },
-                 3.1: 2}
-            },
-      2.1: 2,
-      0.2: 0,
-      1.2: 1,
-      1.4: {'petal length (cm)': {1.6: 1, 4.0: 1, 5.0: {'sepal width (cm)': {2.0: 2, 2.8: 2, 2.6: 1}}, 4.5: {'sepal length (cm)': {4.9: 2, 5.6: 1, 6.3: 1, 6.7: 1, 6.0: 1}}, 5.6: 2}}, 0.1: 0}}
+{'petal width (cm)': {
+                        0.2: 0,
+                        1.2: 1,
+                        1.8: 2,
+                        1.4: {'sepal length (cm)': {
+                                                    4.9: 2,
+                                                    5.2: 1,
+                                                    6.0: 1,
+                                                    6.7:{'petal length (cm)': {
+                                                                        5.0: 1,
+                                                                        4.0: 1,
+                                                                        4.5: 1,
+                                                                        5.6: 2}
+                                                           },
+                                                    6.3: 1,
+                                                    5.6: 1
+                                                    }
+                               },
+                        0.4: {'sepal width (cm)': {
+                                                    3.2: 0,
+                                                    2.0: 1,
+                                                    3.5: 0,
+                                                    2.6: 1
+                                                   }
+                             },
+                        2.1: 2,
+                        0.1: 0
+                     }
+}
 
 
 def one(myTree,data,labels):
@@ -67,8 +77,14 @@ def one(myTree,data,labels):
 
 def getResult(myTree,data,labels):
     result = []
-    for elem in data:
-        result.append(one(myTree,elem,labels))
+    print("myTree:-------------------------")
+    print(myTree)
+    print("================================")
+    for ii,elem in enumerate(data):
+        print("[%s]elem:%s" % (labels,elem))
+        res = one(myTree,elem,labels)
+        print("elem-result:%s" % res)
+        result.append(res)
     return result
 
 def yanzheng(myTree,data,labels,target):
